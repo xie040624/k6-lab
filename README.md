@@ -7,4 +7,5 @@
 - Step 0.4: ✓ status is 200, ✓ pizza has a name, ✓ every ingredient is vegetarian
 - Step 0.5: request without a token is refused, http_req_failed 0.00%
 - Step 0.6: Exit code = 0, Exit code = 99
-- Step 0.7: ✗ p(95)=1.24s, ✗ p(99)=1.59s, ✓ rate=0.00%, Exit code = 99
+- Step 0.7: ✗ p(95)=1.24s, ✗ p(99)=1.59s, ✓ rate=0.00%, Exit code = 99k6 run explore.js
+- Step 0.8: ✗ no pepperoni, ✗ no knife needed; The request used lowercase pepperoni and knife, but the API’s known values were case-sensitive and used Pepperoni and Knife. Therefore, the exclusions were not applied correctly. Repeated requests under load generated multiple random pizza recommendations, making the defect easier to detect than a single manual request.
