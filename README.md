@@ -14,5 +14,5 @@
 - Step A1: http_req_duration: avg=297.84ms, p(95)=332.84ms
 - Step A2: Pass all THRESHOLDS, http_req_duration: avg=306.13ms, p(95)=383.41ms
 - Step A3: Pass all THRESHOLDS, http_req_duration: avg=305.96ms, p(95)=318.8ms lower than A2 p(95)
-- Step A4:
+- Step A4: response time สูงขึ้น, หลังจากลดกลับเป็น 1 VU ใช้เวลา 60 วินาทีจึงกลับสู่ระดับเดิม
 - Step A5:
