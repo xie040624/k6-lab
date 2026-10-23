@@ -9,3 +9,10 @@
 - Step 0.6: Exit code = 0, Exit code = 99
 - Step 0.7: ✗ p(95)=1.24s, ✗ p(99)=1.59s, ✓ rate=0.00%, Exit code = 99k6 run explore.js
 - Step 0.8: ✗ no pepperoni, ✗ no knife needed; The request used lowercase pepperoni and knife, but the API’s known values were case-sensitive and used Pepperoni and Knife. Therefore, the exclusions were not applied correctly. Repeated requests under load generated multiple random pizza recommendations, making the defect easier to detect than a single manual request.
+
+## Load-test scenarios
+- Step A1: http_req_duration: avg=297.84ms, p(95)=332.84ms
+- Step A2: Pass all THRESHOLDS, http_req_duration: avg=306.13ms, p(95)=383.41ms
+- Step A3: Pass all THRESHOLDS, http_req_duration: avg=305.96ms, p(95)=318.8ms lower than A2 p(95)
+- Step A4:
+- Step A5:
