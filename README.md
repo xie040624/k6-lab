@@ -4,3 +4,4 @@
   The rate was below 5 req/s because each iteration included the HTTP
   response time and a one-second sleep.
 - Step 0.3: iteration_duration: avg=1.53s, p(95)=2.05s
+- Step 0.4: status is 200, pizza has a name, every ingredient is vegetarian
