@@ -28,3 +28,43 @@ Notes:
 - A3 completed 134 iterations and 402 HTTP requests. The average response time was 300.32 ms, and p(95) was 382.82 ms. This was 1.38 ms higher than A2. All thresholds passed.
 - A4 completed 49 iterations and 147 HTTP requests. The average response time was 302.39 ms, and p(95) was 385.86 ms. The response time increased during the spike. After the load returned to 1 VU, it took approximately 60 seconds to return to its earlier level.
 - A5 completed 216 iterations and 648 HTTP requests. The average response time was 296.39 ms, and p(95) was 378.06 ms. All 864 checks passed, and all thresholds passed.
+
+## Part B
+
+1. The results of Steps A1 to A5 are shown in the Part A results table above.
+
+2. The request rate in Step 0.2 was below 5 requests per second because each virtual user waited for the HTTP response and then slept for one second. Therefore, each iteration took longer than one second.
+
+3. The overall p(95) increased slightly from 381.44 ms in the average-load test to 382.82 ms in the stress test, an increase of only 1.38 ms or approximately 0.36%. This difference was very small, and both tests passed all thresholds with a 0.00% failure rate. Therefore, increasing the load from 3 to 5 users did not cause a significant performance degradation. The system remained within its operational envelope at the tested load levels.
+
+4. During the spike test, the overall p(95) was 385.86 ms, which was slightly higher than the average-load and stress-test results. After the load dropped from 5 users back to 1 user, the response time took approximately 60 seconds to return to its earlier level.
+
+5. The soak test completed successfully with all thresholds passing. The overall p(95) response time was 378.06 ms, the maximum response time was 417.32 ms, and the failure rate was 0.00%. All 864 checks passed. The overall results did not show a performance or reliability problem during the test. A soak test lasting several hours could reveal defects such as memory leaks, unreleased database connections, resource exhaustion, or continuously growing queues.
+
+6. The thresholds use p(95) rather than the average because an average can hide a small number of very slow requests. The p(95) represents the response time within which 95% of requests completed and therefore provides a clearer view of the experience of most users.
+
+7. The same tests in a controlled laboratory could produce different results for two reasons. First, the public site is reached over the internet, so network latency, routing, and connection quality can vary. Second, QuickPizza is shared with other users, so external traffic can change the server load during the test. A laboratory environment would allow the network, hardware, and background traffic to be controlled.
+
+8. Stress, spike, or breakpoint tests with hundreds of users could overload a website, interrupt service for legitimate users, and create unexpected operating costs. The traffic could also be interpreted as a denial-of-service attack. Such testing should only be performed on a system that you own or have explicit written permission to test.
+
+9. Vague requirement:
+
+   The student registration application should load quickly.
+
+   Testable requirement:
+
+   With 50 concurrent users for five minutes, 95% of registration requests must finish within one second, 99% must finish within two seconds, and fewer than 0.5% of requests may fail.
+
+   K6 thresholds:
+
+   ```javascript
+   thresholds: {
+     http_req_duration: [
+       'p(95)<1000',
+       'p(99)<2000',
+     ],
+     http_req_failed: [
+       'rate<0.005',
+     ],
+   }
+   ```
