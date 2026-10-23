@@ -5,3 +5,4 @@
   response time and a one-second sleep.
 - Step 0.3: iteration_duration: avg=1.53s, p(95)=2.05s
 - Step 0.4: status is 200, pizza has a name, every ingredient is vegetarian
+- Step 0.5: request without a token is refused, http_req_failed 0.00%
